@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.aau.controllers.IntroController">
+   <children>
+      <Button layoutX="253.0" layoutY="152.0" mnemonicParsing="false" onAction="#handleLæge_ProgramBnt" text="Læge_Program" />
+      <Button layoutX="253.0" layoutY="208.0" mnemonicParsing="false" onAction="#handlePatient_LinkBnt" prefHeight="27.0" prefWidth="111.0" text="Patient_Link" />
+      <Text layoutX="184.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Venligst vælg et program">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
