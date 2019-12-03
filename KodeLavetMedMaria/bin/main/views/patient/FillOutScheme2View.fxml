@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.aau.controllers.patient.FillOutScheme2Ctrl">
+   <children> 
+      <GridPane layoutX="34.0" layoutY="33.0" prefHeight="247.0" prefWidth="553.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="10.0" prefWidth="198.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.0" minWidth="10.0" prefWidth="355.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Naermeste Navn" />
+            <Label text="Naermeste mobil nr " GridPane.rowIndex="1" />
+            <Label text="Naermeste telefon nr" GridPane.rowIndex="2" />
+            <Label text="Naermeste Arbejde" GridPane.rowIndex="3" />
+            <TextField fx:id="NaermesteNavnTF" GridPane.columnIndex="1" />
+            <TextField fx:id="NaermesteMobilTF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="NaermesteTelefonTF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="NaermesteArbTF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <CheckBox fx:id="JaCheckBox" layoutX="374.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleJaCheckBox" text="Ja" />
+      <CheckBox fx:id="NejCheckbox" layoutX="487.0" layoutY="342.0" mnemonicParsing="false" onAction="#HandleNejCheckBox" text="Nej" />
+      <Label fx:id="NNavnlkkeUdfyldtLabel" layoutX="244.0" layoutY="30.0" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="26.0" />
+      <Label fx:id="TlfMobilkkeudfyldLabel" layoutX="244.0" layoutY="135.0" text="Udfyld enten nedstående eller nedstående information :" textFill="RED" visible="false" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="125.0" />
+      <Label fx:id="NArbejdeIkkeUdfyldLabel" layoutX="244.0" layoutY="185.0" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="175.0" />
+      <Label fx:id="MRSAIkkeUdfyldLabel" layoutX="244.0" layoutY="235.0" text="Vælg en af ovenstående check-bokse" textFill="RED" visible="false" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="365.0" />
+      <VBox layoutX="34.0" layoutY="273.0" AnchorPane.bottomAnchor="50.0">
+         <children>
+            <Label text="Har du tidligere fået påvist MRSA eller inden for de sidste 6 måneder: " />
+            <Label text="Modtaget behandling på hospital eller klinik i udlandet (uden for Norden)" />
+            <Label text="Boet sammen med (eller haft anden husstandslignede kontakt med) en person, der var " />
+            <Label text="MRSA-positiv?" />
+            <Label text="Haft daglig arbejde i en svinestald eller på anden måde arbejdet med levende svin (eller " />
+            <Label text="bor sammen med en, der har)? " />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
