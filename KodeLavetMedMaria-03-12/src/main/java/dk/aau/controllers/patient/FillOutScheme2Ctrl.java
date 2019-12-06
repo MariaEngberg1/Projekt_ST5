@@ -1,107 +1,108 @@
 package dk.aau.controllers.patient;
 
-import dk.aau.models.Generelinfo;
-import javafx.event.ActionEvent;
+import dk.aau.models.patient.Generelinfo;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class FillOutScheme2Ctrl {
-    private Generelinfo generelinfo; 
+    private Generelinfo generelinfoTemporyDB;
 
     @FXML
-    private TextField NaermesteNavnTF;
+    private Label NarmesteNavnErrorLabel;
 
     @FXML
-    private TextField NaermesteMobilTF;
+    private Label NaermesteTlfErrorLabel;
+
+    @FXML
+    private Label NaermesteMobilErrorLabel;
+
+    @FXML
+    private Label NaermesteArbejdeErrorLabel_id;
 
     @FXML
     private TextField NaermesteTelefonTF;
 
     @FXML
-    private TextField NaermesteArbTF;
+    private TextField naermesteNavnTF;
 
     @FXML
-    private CheckBox JaCheckBox;
+    private TextField NaermesteMobilTF;
 
     @FXML
-    private CheckBox NejCheckbox;
+    private TextField NaermesteArbejdeTF;
 
-    @FXML
-    private Label NNavnlkkeUdfyldtLabel;
-
-    @FXML
-    private Label TlfMobilkkeudfyldLabel;
-
-    @FXML
-    private Label NArbejdeIkkeUdfyldLabel;
-
-    @FXML
-    private Label MRSAIkkeUdfyldLabel;
-
-    @FXML
-    void HandleNejCheckBox(ActionEvent event) {
-        if( NejCheckbox.isSelected() ){
-            JaCheckBox.setSelected(false);
-            generelinfo.setMrsa("false");  
-        }else{
-            JaCheckBox.setSelected(true); 
-            generelinfo.setMrsa("true");
-        }
-    }
-
-    @FXML
-    void handleJaCheckBox(ActionEvent event) {
-        if( JaCheckBox.isSelected() ){
-            NejCheckbox.setSelected(false);
-            generelinfo.setMrsa("true");
-        }else{
-            NejCheckbox.setSelected(true); 
-            generelinfo.setMrsa("false");  
-        } 
-    }
 
     public Boolean checkIfReadyToPresNext(){
         boolean bool = true; 
-        if(NaermesteNavnTF.getPromptText().isEmpty() && NaermesteNavnTF.getText().isEmpty() ) {
-            NNavnlkkeUdfyldtLabel.setVisible(true); 
+        if(naermesteNavnTF.getPromptText().isEmpty() && naermesteNavnTF.getText().isEmpty() ) {
+            NarmesteNavnErrorLabel.setText("Ovenstaande information ikke udfyldt");
+            NarmesteNavnErrorLabel.setVisible(true); 
             bool = false; 
-        }else if(!NaermesteNavnTF.getText().isEmpty()) generelinfo.setNaermesteNavn(NaermesteNavnTF.getText());
+        }else if(!naermesteNavnTF.getText().isEmpty()) generelinfoTemporyDB.setNaermesteNavn(naermesteNavnTF.getText());
 
-        if(NaermesteMobilTF.getPromptText().isEmpty() && NaermesteMobilTF.getText().isEmpty() && NaermesteTelefonTF.getPromptText().isEmpty() && NaermesteTelefonTF.getText().isEmpty()) {
-            TlfMobilkkeudfyldLabel.setVisible(true); 
+
+        if(NaermesteTelefonTF.getPromptText().isEmpty() && NaermesteTelefonTF.getText().isEmpty() && NaermesteMobilTF.getPromptText().isEmpty() && NaermesteMobilTF.getText().isEmpty()) {
+            NaermesteTlfErrorLabel.setText("Ovenstaaende eller nedstaaende infromation ikke udfyld");
+            NaermesteTlfErrorLabel.setVisible(true); 
             bool = false; 
+        }if (!NaermesteTelefonTF.getText().isEmpty()){
+            try{
+                int i = Integer.parseInt(NaermesteTelefonTF.getText().trim());
+                i = NaermesteTelefonTF.getText().length();
+                if (i == 8){
+                    generelinfoTemporyDB.setNaermesteTlf(NaermesteTelefonTF.getText());
+                }else {
+                    bool = false;
+                    NaermesteTlfErrorLabel.setText("Ovenstaaende felt er ikke et korrekt telefon nummer");
+                    NaermesteTlfErrorLabel.setVisible(true);
+                }
+            }catch (NumberFormatException nfe){
+                bool = false;
+                NaermesteTlfErrorLabel.setText("Ovenstaaende felt er ikke et tal");
+                NaermesteTlfErrorLabel.setVisible(true);            
+            }
+        }if (!NaermesteMobilTF.getText().isEmpty()){
+            try{
+                int i = Integer.parseInt(NaermesteMobilTF.getText().trim());
+                i = NaermesteMobilTF.getText().length();
+                if (i == 8){
+                    generelinfoTemporyDB.setNaermesteMobil(NaermesteMobilTF.getText());
+                }else {
+                    bool = false;
+                    NaermesteMobilErrorLabel.setText("Ovenstaaende felt er ikke et korrekt telefon nummer");
+                    NaermesteMobilErrorLabel.setVisible(true);
+                }
+            }catch (NumberFormatException nfe){
+                bool = false;
+                NaermesteMobilErrorLabel.setText("Ovenstaaende felt er ikke et tal");
+                NaermesteMobilErrorLabel.setVisible(true);            
+            }
         }
-        if(!NaermesteMobilTF.getText().isEmpty()) generelinfo.setNaermesteMobil(NaermesteMobilTF.getText());
-        if(!NaermesteTelefonTF.getText().isEmpty()) generelinfo.setNaermesteTlf(NaermesteTelefonTF.getText());
 
-        if(NaermesteArbTF.getPromptText().isEmpty() && NaermesteArbTF.getText().isEmpty() ) {
-            NArbejdeIkkeUdfyldLabel.setVisible(true); 
+    
+        if(NaermesteArbejdeTF.getPromptText().isEmpty() && NaermesteArbejdeTF.getText().isEmpty() ) {
+            NaermesteArbejdeErrorLabel_id.setText("Ovenstaaende information er ikke udfyldt"); 
+            NaermesteArbejdeErrorLabel_id.setVisible(true); 
             bool = false; 
-        }else if(!NaermesteArbTF.getText().isEmpty()) generelinfo.setNaermesteArbejde(NaermesteArbTF.getText());
-
-
-        if(!JaCheckBox.isSelected() && !NejCheckbox.isSelected()){
-            MRSAIkkeUdfyldLabel.setVisible(true); 
-            bool = false; 
-        }
-        else if (JaCheckBox.isSelected()) generelinfo.setMrsa("true"); 
-        else if (NejCheckbox.isSelected()) generelinfo.setMrsa("false"); 
-
+        }else if(!NaermesteArbejdeTF.getText().isEmpty()) generelinfoTemporyDB.setNaermesteArbejde(NaermesteArbejdeTF.getText());
+        
         return bool; 
     }
 
-    public void setInstansOfGeneralPersonInfo(Generelinfo generelinfo){
-        this.generelinfo = generelinfo;
+    public void setInstansOfGeneralPersonInfo(Generelinfo generelinfoTemporyDB, Generelinfo generelinfoClinicalSuiteDB){
+        this.generelinfoTemporyDB = generelinfoTemporyDB;
 
-        NaermesteNavnTF.setPromptText(generelinfo.getNaermesteNavn());
-        NaermesteMobilTF.setPromptText(generelinfo.getNaermesteMobil());
-        NaermesteTelefonTF.setPromptText(generelinfo.getNaermesteTlf());
-        NaermesteArbTF.setPromptText(generelinfo.getNaermesteArbejde());
-        if ("true".equals(generelinfo.getMrsa())) JaCheckBox.setSelected(true); 
-        if ("false".equals(generelinfo.getMrsa())) NejCheckbox.setSelected(true); 
-    
+        if (generelinfoTemporyDB.getNaermesteNavn().isEmpty()) naermesteNavnTF.setPromptText(generelinfoClinicalSuiteDB.getNaermesteNavn());
+        else  naermesteNavnTF.setPromptText(generelinfoTemporyDB.getNaermesteNavn());
+
+        if (generelinfoTemporyDB.getNaermesteMobil().isEmpty()) NaermesteMobilTF.setPromptText(generelinfoClinicalSuiteDB.getNaermesteMobil());
+        else  NaermesteMobilTF.setPromptText(generelinfoTemporyDB.getNaermesteMobil());
+
+        if (generelinfoTemporyDB.getNaermesteTlf().isEmpty()) NaermesteTelefonTF.setPromptText(generelinfoClinicalSuiteDB.getNaermesteTlf());
+        else  NaermesteTelefonTF.setPromptText(generelinfoTemporyDB.getNaermesteTlf());
+
+        if (generelinfoTemporyDB.getNaermesteArbejde().isEmpty()) NaermesteArbejdeTF.setPromptText(generelinfoClinicalSuiteDB.getNaermesteArbejde());
+        else  NaermesteArbejdeTF.setPromptText(generelinfoTemporyDB.getNaermesteArbejde());
     }
-
 }

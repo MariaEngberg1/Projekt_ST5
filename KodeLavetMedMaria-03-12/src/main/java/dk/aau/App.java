@@ -12,9 +12,8 @@ import dk.aau.controllers.sygehus.ShowEditCreateCtrl;
 import dk.aau.controllers.IntroController;
 import dk.aau.controllers.patient.CPRCtrl;
 import dk.aau.controllers.patient.RootlayerMainCtrl;
-import dk.aau.models.CS_Generelinfo;
-import dk.aau.models.Generelinfo;
-
+import dk.aau.models.patient.Generelinfo;
+import dk.aau.models.patient.Patient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -79,7 +78,7 @@ public class App extends Application {
         }
     }
 
-    public void showRootlayer(Generelinfo gi){
+    public void showRootlayer(Patient patient){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("/views/patient/RootlayerMainView.fxml"));
@@ -91,10 +90,11 @@ public class App extends Application {
 
             primaryStage.show();
             RootlayerMainCtrl controller = loader.getController();
-            controller.setReferenceParameteres(this, borderpane, gi);
+            controller.setReferenceParameteres(this, borderpane, patient);
             controller.showFillOutScheme1();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("showRootlayer fungere ikke");
         }
     }
 
@@ -132,7 +132,7 @@ public class App extends Application {
 
 
 
-    public void showShowCreateEdit(CS_Generelinfo cs_generelinfo, Generelinfo generelinfo, String selectedDirection){
+    public void showShowCreateEdit(Patient patient, String selectedDirection){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("/views/laegeViews/ShowEditCreateCtrl.fxml"));
@@ -143,13 +143,11 @@ public class App extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             ShowEditCreateCtrl controller = loader.getController();
-            if("opret".equals(selectedDirection)) controller.setReference(this, cs_generelinfo, selectedDirection); 
-            if("tilgaa".equals(selectedDirection)) controller.setReference(this, cs_generelinfo, generelinfo, selectedDirection); 
+            controller.setReference(this, patient, selectedDirection); 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 
 

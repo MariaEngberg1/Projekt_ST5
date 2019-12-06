@@ -1,20 +1,22 @@
-package dk.aau.models.patient;
-
-import dk.aau.models.Generelinfo;
-import dk.aau.models.database.DatabaseManipulator;
-import dk.aau.models.patient.*;
+package dk.aau.models.patient; 
 
 public class Patient{
-    private String patientCPR; 
-    Generelinfo generelInfo; 
-    Hospitalization hospitalization; 
-    Medicine medicine; 
-    DiseaseType diseaseType; 
-    Consumption consumption; 
-    Nourishment nourishment; 
-    Exercise exercise; 
-    DentalDamage dentalDemage = new DentalDamage(); 
-    Allergy allergy = new Allergy(); 
+    private Generelinfo generelInfoTemporyDB;
+    private Generelinfo generelinfoClinicalSuiteDB;
 
+    public Generelinfo getGenerelInfoTemporyDB() {
+        return generelInfoTemporyDB;
+    }
 
+    public void setGenerelInfoTemporyDB(Generelinfo generelInfoTemporyDB) {
+        this.generelInfoTemporyDB = generelInfoTemporyDB;
+    }
+
+    public Generelinfo getGenerelinfoClinicalSuiteDB() {
+        return generelinfoClinicalSuiteDB;
+    }
+
+    public void setGenerelinfoClinicalSuiteDB(Generelinfo generelinfoClinicalSuiteDB) {
+        this.generelinfoClinicalSuiteDB = generelinfoClinicalSuiteDB;
+    }
 }

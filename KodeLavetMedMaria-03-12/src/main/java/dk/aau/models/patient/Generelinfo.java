@@ -1,34 +1,61 @@
-package dk.aau.models; 
+package dk.aau.models.patient;
 
-public class CS_Generelinfo{
+public class Generelinfo {
+    // Denne information skal kun være i CS DB (ingen patient ændringer muligt): 
     private String navn;
     private String cprNummer; 
-    private String arbejde; 
+    private String egenLaegeNavn; 
+    private String egenlaegeAdresse;
+
+    // Denne information eksiterer allerede i CS DB, men skal også lageres i tempory DB, hvis patient ændringer forkommer. 
     private String mobilNummer; 
     private String telefonNummer; 
-    private String adresse; 
     private String naermesteNavn; 
     private String naermesteTlf; 
     private String naermesteMobil; 
     private String naermesteArbejde; 
-    private String mrsa; 
-    private String egenLaegeNavn; 
-    private String okHentOplysninger;
 
-    public CS_Generelinfo(String navn, String cprNummer, String arbejde, String mobilNummer, String telefonNummer, String adresse, String naermesteNavn, String naermesteTlf, String naermesteMobil, String naermesteArbejde, String mrsa, String egenLaegeNavn, String okHentOplysninger){ 
-        this.navn = navn; 
+
+    //Den information eksister kun i tempory DB, og skal besvares af patient hver gang : 
+    private String mrsa; 
+    private String okHentOplysninger; 
+    private String skemaUdfyld; 
+    private String arbejde; 
+
+    /**
+     * This contructor is used for storage of information fra Tempory database
+     */
+    public Generelinfo(String cprNummer, String mobilNummer, String telefonNummer, String naermesteNavn, String naermesteTlf, String naermesteMobil, String naermesteArbejde,  String mrsa, String okHentOplysninger,  String skemaudfyld, String arbejde){
+        // Denne information skal bruges til besvarelse af PBS
         this.cprNummer = cprNummer; 
         this.arbejde = arbejde; 
+        this.mrsa = mrsa; 
+
+        // Denne informaiton skal 
         this.mobilNummer = mobilNummer; 
         this.telefonNummer = telefonNummer; 
-        this.adresse = adresse; 
+        this.naermesteNavn = naermesteNavn; 
+        this.naermesteTlf = naermesteTlf; 
+        this.naermesteMobil = naermesteMobil; 
+        this.naermesteArbejde = naermesteArbejde; 
+        this.okHentOplysninger = okHentOplysninger; 
+        this.skemaUdfyld = skemaudfyld; 
+    }
+
+    /**
+     * This contructor is used for storage of information fra CS database
+     */
+    public Generelinfo(String navn, String egenLaegeNavn, String egenlaegeAdresse, String cprNummer, String mobilNummer, String telefonNummer, String naermesteNavn, String naermesteTlf, String naermesteMobil, String naermesteArbejde){ 
+        this.navn = navn; 
+        this.egenLaegeNavn = egenLaegeNavn; 
+        this.egenlaegeAdresse = egenlaegeAdresse; 
+        this.cprNummer = cprNummer; 
+        this.mobilNummer = mobilNummer; 
+        this.telefonNummer = telefonNummer; 
         this.naermesteNavn = naermesteNavn; 
         this.naermesteTlf = naermesteTlf; 
         this.naermesteMobil = naermesteMobil; 
         this.naermesteArbejde = naermesteArbejde;
-        this.mrsa = mrsa; 
-        this.egenLaegeNavn = egenLaegeNavn; 
-        this.okHentOplysninger = okHentOplysninger; 
     }
 
     public String getNavn() {
@@ -69,14 +96,6 @@ public class CS_Generelinfo{
 
     public void setTelefonNummer(String telefonNummer) {
         this.telefonNummer = telefonNummer;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
     }
 
     public String getNaermesteNavn() {
@@ -133,5 +152,21 @@ public class CS_Generelinfo{
 
     public void setOkHentOplysninger(String okHentOplysninger) {
         this.okHentOplysninger = okHentOplysninger;
+    }
+
+    public String getSkemaUdfyld() {
+        return skemaUdfyld;
+    }
+
+    public void setSkemaUdfyld(String skemaUdfyld) {
+        this.skemaUdfyld = skemaUdfyld;
+    }
+
+    public String getEgenlaegeAdresse() {
+        return egenlaegeAdresse;
+    }
+
+    public void setEgenlaegeAdresse(String egenlaegeAdresse) {
+        this.egenlaegeAdresse = egenlaegeAdresse;
     }
 }

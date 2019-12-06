@@ -1,9 +1,9 @@
 package dk.aau.controllers.sygehus;
 
 import dk.aau.App;
-import dk.aau.models.CS_Generelinfo;
-import dk.aau.models.Generelinfo;
 import dk.aau.models.database.DatabaseManipulator;
+import dk.aau.models.patient.Generelinfo;
+import dk.aau.models.patient.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 public class ShowEditCreateCtrl{
     private App mainApp; 
-    private CS_Generelinfo cs_generelinfo;
+    private Generelinfo cs_generelinfo;
     private Generelinfo generelinfo; 
     private String selectedDirection; 
 
@@ -206,9 +206,9 @@ public class ShowEditCreateCtrl{
     @FXML
     void handleSendtilPatientBnt(ActionEvent event) {
         if("opret".equals(selectedDirection)){
-            DatabaseManipulator.updateDataBase("INSERT INTO `GenerelInformation` (`Navn`, `CPR-nummer`, `Arbejde`, `Mobilnummer`, `telefonNummer`, `adresse`, `naermesteNavn`, `naermesteTlf`, `naermesteMobil`, `naermesteArbejde`, `mrsa`, `EgenLaegeNavn`, `okHentOplysninger`, `SkemaUdfyld`) VALUES ('"+cs_generelinfo.getNavn()+"', '"+cs_generelinfo.getCprNummer()+"', '"+cs_generelinfo.getArbejde()+"', '"+cs_generelinfo.getMobilNummer()+"', '"+cs_generelinfo.getNaermesteTlf()+"', '"+cs_generelinfo.getAdresse()+"', '"+cs_generelinfo.getNaermesteNavn()+"', '"+cs_generelinfo.getNaermesteTlf()+"', '"+cs_generelinfo.getNaermesteMobil()+"', '"+cs_generelinfo.getNaermesteArbejde()+"', '"+cs_generelinfo.getMrsa()+"', '"+cs_generelinfo.getEgenLaegeNavn()+"', '"+cs_generelinfo.getOkHentOplysninger()+"', 'false')");
+            DatabaseManipulator.updateDataBase("INSERT INTO `TemporyDBGenerelInformation` (`CPR-nummer`, `Arbejde`, `Mobilnummer`, `telefonNummer`, `naermesteNavn`, `naermesteTlf`, `naermesteMobil`, `naermesteArbejde`, `mrsa`, `okHentOplysninger`, `SkemaUdfyld`) VALUES ('"+cs_generelinfo.getCprNummer()+"', '', '"+cs_generelinfo.getMobilNummer()+"', '"+cs_generelinfo.getTelefonNummer()+"', '"+cs_generelinfo.getNaermesteNavn()+"', '"+cs_generelinfo.getNaermesteTlf()+"', '"+cs_generelinfo.getNaermesteMobil()+"', '"+cs_generelinfo.getNaermesteArbejde()+"', '', '', 'false')");
             mainApp.ShowScheme(); 
-        } else System.out.println("IDK what to do?");
+        } else if ("tilgaa".equals(selectedDirection)) System.out.println("IDK what to do?");
     }
 
     @FXML
@@ -216,138 +216,117 @@ public class ShowEditCreateCtrl{
         mainApp.ShowScheme(); 
     }
 
-
-
-    public void setReference(App mainApp, CS_Generelinfo cs_generelinfo, String selectedDirection ){
+    public void setReference(App mainApp, Patient patient, String selectedDirection ){
         this.mainApp = mainApp; 
-        this.cs_generelinfo = cs_generelinfo; 
         this.selectedDirection = selectedDirection; 
 
-        PatientNavnTF.setText(cs_generelinfo.getNavn());
-        PatientNavnTF.setEditable(false);
-
-        cprTF.setText(cs_generelinfo.getCprNummer());
-        cprTF.setEditable(false);
-
-        tlfTF.setText(cs_generelinfo.getTelefonNummer());
-        tlfTF.setEditable(false);
-
-        arbejdeTF.setText(cs_generelinfo.getArbejde());
-        arbejdeTF.setEditable(false);
-
-        mobilTF.setText(cs_generelinfo.getMobilNummer());
-        mobilTF.setEditable(false);
-
-        adresseFT.setText(cs_generelinfo.getAdresse());
-        adresseFT.setEditable(false);
-
-        naermesteNavnTF.setText(cs_generelinfo.getNaermesteNavn()); 
-        naermesteNavnTF.setEditable(false);
-
-        naermesteTlfTF.setText(cs_generelinfo.getNaermesteTlf());
-        naermesteTlfTF.setEditable(false);
-
-        naermesteArbejdeTF.setText(cs_generelinfo.getNaermesteArbejde());
-        naermesteArbejdeTF.setEditable(false);
-
-        naermesteMobilTF.setText(cs_generelinfo.getNaermesteMobil());
-        naermesteMobilTF.setEditable(false);
-
-        EgenLaegeTF.setText(cs_generelinfo.getEgenLaegeNavn());
-        EgenLaegeTF.setEditable(false);
-
-        if (cs_generelinfo.getMrsa().equals("true")) mrsaJaCheckBnt.setSelected(true); 
-        if (cs_generelinfo.getMrsa().equals("false") || cs_generelinfo.getMrsa().isEmpty()) mrsaJaCheckBnt.setSelected(true); 
-
-
-    }
-
-    public void setReference(App mainApp, CS_Generelinfo cs_generelinfo, Generelinfo generelinfo, String selectedDirection ){
-        this.mainApp = mainApp; 
-        this.cs_generelinfo = cs_generelinfo; 
-        this.selectedDirection = selectedDirection; 
+        this.cs_generelinfo = patient.getGenerelinfoClinicalSuiteDB(); 
 
         PatientNavnTF.setText(cs_generelinfo.getNavn());
-        PatientNavnTF.setEditable(false);
-
         cprTF.setText(cs_generelinfo.getCprNummer());
+        tlfTF.setText(cs_generelinfo.getTelefonNummer());
+        arbejdeTF.setText(cs_generelinfo.getArbejde());
+        mobilTF.setText(cs_generelinfo.getMobilNummer());
+        naermesteNavnTF.setText(cs_generelinfo.getNaermesteNavn()); 
+        naermesteTlfTF.setText(cs_generelinfo.getNaermesteTlf());
+        naermesteArbejdeTF.setText(cs_generelinfo.getNaermesteArbejde());
+        naermesteMobilTF.setText(cs_generelinfo.getNaermesteMobil());
+        EgenLaegeTF.setText(cs_generelinfo.getEgenLaegeNavn());
+
+        //We doent wonna change anything if 'opret' has been choisen
+        if(selectedDirection.equals("opret")){
+            tlfTF.setEditable(false);
+            arbejdeTF.setEditable(false);
+            mobilTF.setEditable(false);
+            adresseFT.setEditable(false);
+            naermesteNavnTF.setEditable(false);
+            naermesteTlfTF.setEditable(false);
+            naermesteArbejdeTF.setEditable(false);
+            naermesteMobilTF.setEditable(false);
+            EgenLaegeTF.setEditable(false);
+        }
+
+        //We never wanne change these
+        PatientNavnTF.setEditable(false);
         cprTF.setEditable(false);
 
+        //=============================================
 
-        tlfTF.setText(cs_generelinfo.getTelefonNummer());
-        if(!cs_generelinfo.getTelefonNummer().equals(generelinfo.getTelefonNummer())){
-            tlfIkkeUdfyldtLabel.setVisible(true);
-            tlfIkkeUdfyldtLabel.setText(generelinfo.getTelefonNummer());
-        }
-        
-        arbejdeTF.setText(cs_generelinfo.getArbejde());
-        if(!cs_generelinfo.getArbejde().equals(generelinfo.getArbejde())){
-            ArbejdeIkkeUdfyldtLabel.setVisible(true);
-            ArbejdeIkkeUdfyldtLabel.setText(generelinfo.getArbejde());
-        }
-        
-        mobilTF.setText(cs_generelinfo.getMobilNummer());
-        if(!cs_generelinfo.getMobilNummer().equals(generelinfo.getMobilNummer())){
-            mobilIkkeUdfyldtLabel.setVisible(true);
-            mobilIkkeUdfyldtLabel.setText(generelinfo.getMobilNummer());
-        }
-        
-        adresseFT.setText(cs_generelinfo.getAdresse());
-        if(!cs_generelinfo.getAdresse().equals(generelinfo.getAdresse())){
-            AdresseIkkeUdfyldtLabel.setVisible(true);
-            AdresseIkkeUdfyldtLabel.setText(generelinfo.getAdresse());
-        }
-        
-        naermesteNavnTF.setText(cs_generelinfo.getNaermesteNavn()); 
-        if(!cs_generelinfo.getNaermesteNavn().equals(generelinfo.getNaermesteNavn())){
-            naermesteNavnIkkeUdfyldtLabel.setVisible(true);
-            naermesteNavnIkkeUdfyldtLabel.setText(generelinfo.getNaermesteNavn());
-        }
-        
-        naermesteTlfTF.setText(cs_generelinfo.getNaermesteTlf());
-        if(!cs_generelinfo.getNaermesteTlf().equals(generelinfo.getNaermesteTlf())){
-            naermesteTlfIkkeUdfyldtLabel.setVisible(true);
-            naermesteTlfIkkeUdfyldtLabel.setText(generelinfo.getNaermesteTlf());
-        }
-        
-        naermesteArbejdeTF.setText(cs_generelinfo.getNaermesteArbejde());
-        if(!cs_generelinfo.getNaermesteArbejde().equals(generelinfo.getNaermesteArbejde())){
-            naermestearbejdeIkkeUdfyldtLabel.setVisible(true);
-            naermestearbejdeIkkeUdfyldtLabel.setText(generelinfo.getNaermesteArbejde());
-        }
-        
-        naermesteMobilTF.setText(cs_generelinfo.getNaermesteMobil());
-        if(!cs_generelinfo.getNaermesteMobil().equals(generelinfo.getNaermesteMobil())){
-            naermesteMobilIkkeUdfyldtLabel.setVisible(true);
-            naermesteMobilIkkeUdfyldtLabel.setText(generelinfo.getNaermesteMobil());
-        }
-        
-        EgenLaegeTF.setText(cs_generelinfo.getEgenLaegeNavn());
-        if(!cs_generelinfo.getEgenLaegeNavn().equals(generelinfo.getEgenLaegeNavn())){
-            egenLaegeIkkeUdfyldtLabel.setVisible(true);
-            egenLaegeIkkeUdfyldtLabel.setText(generelinfo.getEgenLaegeNavn());
-        }
+  
+        if (selectedDirection.equals("tilgaa")){
 
-        if (cs_generelinfo.getMrsa().equals("true")) mrsaJaCheckBnt.setSelected(true); 
-        if (cs_generelinfo.getMrsa().equals("false") || cs_generelinfo.getMrsa().isEmpty()) mrsaCheckBnt.setSelected(true); 
+            this.generelinfo = patient.getGenerelInfoTemporyDB(); 
 
-        if (!cs_generelinfo.getMrsa().equals(generelinfo.getMrsa())){
-            mrsaIkkeUdfyldtLabel.setVisible(true); 
-            if(generelinfo.getMrsa().equals("true"))  mrsaIkkeUdfyldtLabel.setText("Ja");
-            if(generelinfo.getMrsa().equals("false"))  mrsaIkkeUdfyldtLabel.setText("Nej");
-        } 
-
-        //====================
-        if (cs_generelinfo.getOkHentOplysninger().equals("true")) henteOplysningerJaCheckBnt.setSelected(true); 
-        if (cs_generelinfo.getOkHentOplysninger().equals("false") || cs_generelinfo.getOkHentOplysninger().isEmpty()) henteOplysningerNejCheckBnt.setSelected(true); 
-
-        
-
-        if (!cs_generelinfo.getOkHentOplysninger().equals(generelinfo.getOkHentOplysninger())){
-            egenlaegeOplysninger.setVisible(true); 
+            tlfTF.setText(cs_generelinfo.getTelefonNummer());
+            if(!cs_generelinfo.getTelefonNummer().equals(generelinfo.getTelefonNummer())){
+                tlfIkkeUdfyldtLabel.setVisible(true);
+                tlfIkkeUdfyldtLabel.setText(generelinfo.getTelefonNummer());
+            }
             
-            if(generelinfo.getOkHentOplysninger().equals("true"))  egenlaegeOplysninger.setText("Ja");
-            if(generelinfo.getOkHentOplysninger().equals("false")) egenlaegeOplysninger.setText("Nej");
-        } 
+            arbejdeTF.setText(cs_generelinfo.getArbejde());
+            if(!cs_generelinfo.getArbejde().equals(generelinfo.getArbejde())){
+                ArbejdeIkkeUdfyldtLabel.setVisible(true);
+                ArbejdeIkkeUdfyldtLabel.setText(generelinfo.getArbejde());
+            }
+            
+            mobilTF.setText(cs_generelinfo.getMobilNummer());
+            if(!cs_generelinfo.getMobilNummer().equals(generelinfo.getMobilNummer())){
+                mobilIkkeUdfyldtLabel.setVisible(true);
+                mobilIkkeUdfyldtLabel.setText(generelinfo.getMobilNummer());
+            }
+            
+            naermesteNavnTF.setText(cs_generelinfo.getNaermesteNavn()); 
+            if(!cs_generelinfo.getNaermesteNavn().equals(generelinfo.getNaermesteNavn())){
+                naermesteNavnIkkeUdfyldtLabel.setVisible(true);
+                naermesteNavnIkkeUdfyldtLabel.setText(generelinfo.getNaermesteNavn());
+            }
+            
+            naermesteTlfTF.setText(cs_generelinfo.getNaermesteTlf());
+            if(!cs_generelinfo.getNaermesteTlf().equals(generelinfo.getNaermesteTlf())){
+                naermesteTlfIkkeUdfyldtLabel.setVisible(true);
+                naermesteTlfIkkeUdfyldtLabel.setText(generelinfo.getNaermesteTlf());
+            }
+            
+            naermesteArbejdeTF.setText(cs_generelinfo.getNaermesteArbejde());
+            if(!cs_generelinfo.getNaermesteArbejde().equals(generelinfo.getNaermesteArbejde())){
+                naermestearbejdeIkkeUdfyldtLabel.setVisible(true);
+                naermestearbejdeIkkeUdfyldtLabel.setText(generelinfo.getNaermesteArbejde());
+            }
+            
+            naermesteMobilTF.setText(cs_generelinfo.getNaermesteMobil());
+            if(!cs_generelinfo.getNaermesteMobil().equals(generelinfo.getNaermesteMobil())){
+                naermesteMobilIkkeUdfyldtLabel.setVisible(true);
+                naermesteMobilIkkeUdfyldtLabel.setText(generelinfo.getNaermesteMobil());
+            }
+            
+            EgenLaegeTF.setText(cs_generelinfo.getEgenLaegeNavn());
+            if(!cs_generelinfo.getEgenLaegeNavn().equals(generelinfo.getEgenLaegeNavn())){
+                egenLaegeIkkeUdfyldtLabel.setVisible(true);
+                egenLaegeIkkeUdfyldtLabel.setText(generelinfo.getEgenLaegeNavn());
+            }
+
+            if (cs_generelinfo.getMrsa().equals("true")) mrsaJaCheckBnt.setSelected(true); 
+            if (cs_generelinfo.getMrsa().equals("false") || cs_generelinfo.getMrsa().isEmpty()) mrsaCheckBnt.setSelected(true); 
+
+            if (!cs_generelinfo.getMrsa().equals(generelinfo.getMrsa())){
+                mrsaIkkeUdfyldtLabel.setVisible(true); 
+                if(generelinfo.getMrsa().equals("true"))  mrsaIkkeUdfyldtLabel.setText("Ja");
+                if(generelinfo.getMrsa().equals("false"))  mrsaIkkeUdfyldtLabel.setText("Nej");
+            } 
+
+            //====================
+            if (cs_generelinfo.getOkHentOplysninger().equals("true")) henteOplysningerJaCheckBnt.setSelected(true); 
+            if (cs_generelinfo.getOkHentOplysninger().equals("false") || cs_generelinfo.getOkHentOplysninger().isEmpty()) henteOplysningerNejCheckBnt.setSelected(true); 
+
+            
+
+            if (!cs_generelinfo.getOkHentOplysninger().equals(generelinfo.getOkHentOplysninger())){
+                egenlaegeOplysninger.setVisible(true); 
+                
+                if(generelinfo.getOkHentOplysninger().equals("true"))  egenlaegeOplysninger.setText("Ja");
+                if(generelinfo.getOkHentOplysninger().equals("false")) egenlaegeOplysninger.setText("Nej");
+            } 
+        }
     }
 }
+

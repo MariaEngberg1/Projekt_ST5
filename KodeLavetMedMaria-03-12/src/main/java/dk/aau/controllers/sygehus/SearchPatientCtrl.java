@@ -1,9 +1,8 @@
 package dk.aau.controllers.sygehus;
 
 import dk.aau.App;
-import dk.aau.models.CS_GenerelinfoHandler;
-import dk.aau.models.Generelinfo;
-import dk.aau.models.GenerelinfoHandler;
+import dk.aau.models.patient.GenerelinfoHandler;
+import dk.aau.models.patient.Patient;
 import dk.aau.models.database.DatabaseManipulator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,59 +19,49 @@ public class SearchPatientCtrl {
 
     @FXML
     void handleEnterBtn(ActionEvent event) {
-        CS_GenerelinfoHandler cs_gih = new CS_GenerelinfoHandler();
-        DatabaseManipulator.executeQueryWithResultSet(cs_gih, "SELECT * FROM csGenerelInformation");
+        if (!CPRnummerTextField.getText().isEmpty()){
+            try{
+                long i = Long.parseLong(CPRnummerTextField.getText().trim());
+                if (CPRnummerTextField.getText().length() == 10){
+                    GenerelinfoHandler generelinfoClinicalSuiteDB = new GenerelinfoHandler("ClinicalSuiteDB");
+                    DatabaseManipulator.executeQueryWithResultSet(generelinfoClinicalSuiteDB, "SELECT * FROM `ClinicalSuiteDBGenerelInformation`  WHERE `CPR-nummer` ='"+ CPRnummerTextField.getText() +"'");
 
-        int pladsnr = 0; //peger på instansen af CS_GenerelinfoHandler som holder rigtige cpr nummer
-        boolean cprNumberExistsInDB = false; 
+                    GenerelinfoHandler generelinfoTemporyDB = new GenerelinfoHandler("TemporyDB");
+                    DatabaseManipulator.executeQueryWithResultSet(generelinfoTemporyDB,  "SELECT * FROM `TemporyDBGenerelInformation` WHERE `CPR-nummer` ='"+ CPRnummerTextField.getText() +"'");
 
-        //Check if entered CPR nummer exist in CS DB
-        for (int i = 0; i<cs_gih.getSizeOfCSGenerelinfoListe(); i++){ 
-            if (CPRnummerTextField.getText().equals(cs_gih.getCSGenerelinfoListe(i).getCprNummer())) {
-                cprNumberExistsInDB = true; 
-                pladsnr = i;
-            }
-        }
 
-        if(cprNumberExistsInDB){
-            // Load temporary DB
-            GenerelinfoHandler gih = new GenerelinfoHandler();
-            DatabaseManipulator.executeQueryWithResultSet(gih, "SELECT * FROM GenerelInformation");
-            
-            //Check if entered CPR nummer already exist in temporary DB: 
-            if(selectedDirection.equals("opret")){
-                Boolean doesEnteredCprNumberAlreadyExistsInTemporaryDB = false; 
-                for (int i = 0; i<gih.getSizeOfGenerelinfoListe(); i++){ 
-                    if (CPRnummerTextField.getText().equals( gih.getGenerelinfoListe(i).getCprNummer() )) {
-                        doesEnteredCprNumberAlreadyExistsInTemporaryDB = true; 
-                    }
+                    if(generelinfoClinicalSuiteDB.getSizeOfGenerelinfoListe() !=0) {
+                        System.out.println("size of CS DB " + generelinfoClinicalSuiteDB.getSizeOfGenerelinfoListe()); // <<-------
+                        if(selectedDirection.equals("opret")){
+                            if(generelinfoTemporyDB.getSizeOfGenerelinfoListe() == 0) {
+                                System.out.println("size of T DB " + generelinfoTemporyDB.getSizeOfGenerelinfoListe()); // <<-------
+
+                                Patient patient = new Patient();
+                                patient.setGenerelinfoClinicalSuiteDB(generelinfoClinicalSuiteDB.getGenerelinfoListe(0));
+                                mainApp.showShowCreateEdit(patient, selectedDirection); 
+                            }else showAlertBox("Indtastet patient CPR nummer har allerede faaet tilsendt praebooking skema");
+
+                        }else if(selectedDirection.equals("tilgaa")){
+                            if(generelinfoTemporyDB.getSizeOfGenerelinfoListe() != 0) {
+                                if(generelinfoTemporyDB.getGenerelinfoListe(0).getSkemaUdfyld().equals("true")){
+                                    Patient patient = new Patient();
+                                    patient.setGenerelinfoClinicalSuiteDB(generelinfoClinicalSuiteDB.getGenerelinfoListe(0));
+                                    patient.setGenerelInfoTemporyDB(generelinfoTemporyDB.getGenerelinfoListe(0));
+                                    mainApp.showShowCreateEdit(patient, selectedDirection); 
+                                } else showAlertBox("Patient har ikke svaret på praebooking-skema endnu");
+                            }else showAlertBox("Intet praebooking-skema er sendt til patient CPR nummer");
+                        }
+                    }else showAlertBox("Indtastet CPR nummer eksistere ikke i Databasen");
+       
+                }else {
+                    showAlertBox("Indtastede CPR input har forkert laengde");
                 }
-                //Open "opret" if CPR nummer doesnt exist in tempory DB: 
-                if (!doesEnteredCprNumberAlreadyExistsInTemporaryDB) mainApp.showShowCreateEdit(cs_gih.getCSGenerelinfoListe(pladsnr), new Generelinfo(), selectedDirection); 
-                else if (doesEnteredCprNumberAlreadyExistsInTemporaryDB) showAlertBox("Prebooking-Skema allerede sendt til CPR-nummeret "+ CPRnummerTextField.getText());
-
-            }else if(selectedDirection.equals("tilgaa")){
-                boolean preBookingSkemaSend = true;
-                //check in tempory DB if entered CPR nummer has answered PBS
-                for (int i = 0; i<gih.getSizeOfGenerelinfoListe(); i++){ 
-                    if (CPRnummerTextField.getText().equals(gih.getGenerelinfoListe(i).getCprNummer()) && "true".equals(gih.getGenerelinfoListe(i).getSkemaUdfyld()) ) {
-                        //if entered CPR nummer has answered
-                        mainApp.showShowCreateEdit(cs_gih.getCSGenerelinfoListe(pladsnr), gih.getGenerelinfoListe(i), selectedDirection); 
-                        preBookingSkemaSend = false;
-
-                    } else if (CPRnummerTextField.getText().equals(gih.getGenerelinfoListe(i).getCprNummer()) && "false".equals(gih.getGenerelinfoListe(i).getSkemaUdfyld()) ){
-                        //if entered CPR nummer has not answered yet
-                        showAlertBox("Prebooking-skema er ikke blevet udfyldt af patient endnu");
-                        preBookingSkemaSend = false;
-                    }
-                }
-                
-                if(preBookingSkemaSend) showAlertBox("Intet Prebookingskema er sendt til patient");
+            }catch (NumberFormatException nfe){
+                showAlertBox("Indtastet CPR input maa ikke indeholde bogstaver");     
             }
-        }else{
-            showAlertBox("CPR-nummer eksiterer ikke i DataBase register");
-        }
+        }else showAlertBox("Intet CPR nummer indtastet");
     }
+
 
 
     public void showAlertBox(String str){
