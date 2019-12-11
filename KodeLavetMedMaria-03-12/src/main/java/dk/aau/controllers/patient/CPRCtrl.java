@@ -19,12 +19,15 @@ public class CPRCtrl {
 
     @FXML
     void handleEnterBtn(ActionEvent event) {
-    
+        validateCPR(CPRnummerTextField); 
+    }
+
+    public void validateCPR(TextField CPRnummerTextField){
         if (!CPRnummerTextField.getText().isEmpty()){
             try{
-                long i = Long.parseLong(CPRnummerTextField.getText().trim());
+                Long.parseLong(CPRnummerTextField.getText().trim());
                 if (CPRnummerTextField.getText().length() == 10){
-                    GenerelinfoHandler generelinfoHandlerTemporyDB = new GenerelinfoHandler("TemporyDB");
+                    GenerelinfoHandler generelinfoHandlerTemporyDB =  new GenerelinfoHandler("TemporyDB");
                     DatabaseManipulator.executeQueryWithResultSet(generelinfoHandlerTemporyDB, "SELECT * FROM `TemporyDBGenerelInformation` WHERE `CPR-nummer` ='"+CPRnummerTextField.getText()+"'");
 
                     if(generelinfoHandlerTemporyDB.getSizeOfGenerelinfoListe() !=0) {
@@ -40,9 +43,7 @@ public class CPRCtrl {
                         }else alertBox("Praebooking-skema allerede udfyldt");
                     } else alertBox("Intet Praebooking skema er tilsendt");      
                 }else alertBox("Indtastede CPR input har forkert laengde");
-            }catch (NumberFormatException nfe){
-                alertBox("Indtastet CPR input maa ikke indeholde bogstaver");     
-            }
+            }catch (NumberFormatException nfe){ alertBox("Indtastet CPR input maa ikke indeholde bogstaver");}   
         } else alertBox("TextField er tom");
     }
 

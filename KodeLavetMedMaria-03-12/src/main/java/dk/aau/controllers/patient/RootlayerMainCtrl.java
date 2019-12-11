@@ -66,6 +66,7 @@ public class RootlayerMainCtrl {
             showFillOutScheme1(); 
             TilbageBtn.setVisible(false);
             overskriftLabel.setText("Spoergsmaal 1 - Generel information");
+            ProgressBar.setProgress(0.0);
         }
 
         if(nrCenterViewShowing == 2 && fillOutScheme1Ctrl.checkIfReadyToPresNext()){

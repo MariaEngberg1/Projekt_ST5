@@ -7,7 +7,7 @@ public class Patient{
     public Generelinfo getGenerelInfoTemporyDB() {
         return generelInfoTemporyDB;
     }
-
+//
     public void setGenerelInfoTemporyDB(Generelinfo generelInfoTemporyDB) {
         this.generelInfoTemporyDB = generelInfoTemporyDB;
     }

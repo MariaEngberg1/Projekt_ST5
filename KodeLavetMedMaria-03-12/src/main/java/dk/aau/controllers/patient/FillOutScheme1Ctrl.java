@@ -130,7 +130,10 @@ public class FillOutScheme1Ctrl {
 
     public void setInstansOfGeneralPersonInfo(Generelinfo generelinfoTemporyDB, Generelinfo generelinfoClinicalSuiteDB){
         this.generelinfoTemporyDB = generelinfoTemporyDB;
+        setKnoParameters (generelinfoTemporyDB, generelinfoClinicalSuiteDB);
+    }
 
+    public void setKnoParameters( Generelinfo generelinfoTemporyDB, Generelinfo generelinfoClinicalSuiteDB ) {
         if (generelinfoTemporyDB.getMobilNummer().isEmpty()) MobilTextField.setPromptText(generelinfoClinicalSuiteDB.getMobilNummer());
         else  MobilTextField.setPromptText(generelinfoTemporyDB.getMobilNummer());
 
@@ -144,4 +147,6 @@ public class FillOutScheme1Ctrl {
             else nejCheckBox_id.setSelected(true);
         }
     }
+
+
 }
