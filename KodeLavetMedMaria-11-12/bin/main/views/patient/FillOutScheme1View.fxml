@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.aau.controllers.patient.FillOutScheme1Ctrl"> 
+   <children>
+      <Label fx:id="ArbejdeErrorLabel" layoutX="572.0" layoutY="39.0" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.leftAnchor="241.8" AnchorPane.topAnchor="70.0" />
+      <Label fx:id="MobilErrorLabel" layoutX="234.0" layoutY="125.0" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.leftAnchor="241.8" AnchorPane.topAnchor="160.0" />
+      <Label fx:id="TelefonErrorLabel" layoutX="234.0" layoutY="225.0" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="241.8" />
+      <Label fx:id="indhentErrorLabel" layoutX="210.0" layoutY="30.0" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="300.0" />
+      <GridPane layoutX="81.0" layoutY="-31.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.20001220703125" minWidth="10.0" prefWidth="210.19998779296876" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="372.39996337890625" minWidth="10.0" prefWidth="328.6000122070313" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="MobilTextField" prefHeight="46.0" prefWidth="370.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Label text="Mobil nummer : " GridPane.rowIndex="1">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font></Label>
+            <Label text="Telefon nummer :" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label text="Arbejde : ">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font></Label>
+            <TextField fx:id="ArbejdeTextField1" layoutX="210.0" layoutY="187.0" prefHeight="46.0" prefWidth="370.0" GridPane.columnIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="TelefonTextField2" layoutX="210.0" layoutY="187.0" prefHeight="46.0" prefWidth="370.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+               <children>
+                  <Label text="Jeg er indforstået med, at der">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="18.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="må indhentes oplysninger ved">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefWidth="130.0" text="min læge">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <CheckBox fx:id="jaChechBox_id" mnemonicParsing="false" onAction="#handleJaCheckBoc" text="Ja">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" right="10.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="nejCheckBox_id" mnemonicParsing="false" onAction="#handleNejChechBox" text="Nej">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="40.0" top="50.0" />
+               </GridPane.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </GridPane>
+   </children>
+</AnchorPane>

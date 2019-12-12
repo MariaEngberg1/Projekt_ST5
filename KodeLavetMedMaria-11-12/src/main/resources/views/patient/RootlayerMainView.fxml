@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.aau.controllers.patient.RootlayerMainCtrl">
+   <bottom>                                                                                                                                          
+      <AnchorPane prefHeight="84.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="NextBtn" layoutX="522.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNextBtn" prefHeight="27.0" prefWidth="64.0" text="Næste" AnchorPane.rightAnchor="14.0" />
+            <Button fx:id="TilbageBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleTilbageBtn" prefHeight="27.0" prefWidth="66.0" text="Tilbage" />
+            <ProgressBar fx:id="ProgressBar" layoutX="14.0" layoutY="50.0" prefHeight="20.0" prefWidth="680.0" progress="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <top>
+      <Label fx:id="overskriftLabel" text="Spoergsmaal 1 - Generel information" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Cambria Bold" size="24.0" />
+         </font>
+      </Label>
+   </top>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+</BorderPane>

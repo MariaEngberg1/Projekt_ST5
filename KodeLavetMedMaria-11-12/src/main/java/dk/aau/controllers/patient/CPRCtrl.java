@@ -2,7 +2,7 @@ package dk.aau.controllers.patient;
 
 import dk.aau.App;
 import dk.aau.models.patient.GenerelinfoHandler;
-import dk.aau.models.patient.Patient;
+import dk.aau.models.patient.Patientinformation;
 import dk.aau.models.database.*;
 
 import javafx.event.ActionEvent;
@@ -27,18 +27,17 @@ public class CPRCtrl {
             try{
                 Long.parseLong(CPRnummerTextField.getText().trim());
                 if (CPRnummerTextField.getText().length() == 10){
-                    GenerelinfoHandler generelinfoHandlerTemporyDB =  new GenerelinfoHandler("TemporyDB");
-                    DatabaseManipulator.executeQueryWithResultSet(generelinfoHandlerTemporyDB, "SELECT * FROM `TemporyDBGenerelInformation` WHERE `CPR-nummer` ='"+CPRnummerTextField.getText()+"'" );
+                    GenerelinfoHandler generelinfoHandler =  new GenerelinfoHandler("PSDB");
+                    DatabaseManipulator.executeQueryWithResultSet(generelinfoHandler, "SELECT * FROM `TemporyDBGenerelInformation` WHERE `CPR-nummer` ='"+CPRnummerTextField.getText()+"'" );
 
-                    if(generelinfoHandlerTemporyDB.getSizeOfGenerelinfoListe() !=0) {
-                        if (!generelinfoHandlerTemporyDB.getGenerelinfoListe(0).getSkemaUdfyld().equals("true")){
-                            GenerelinfoHandler generelinfoHandlerClinicalSuiteDB = new GenerelinfoHandler("ClinicalSuiteDB");
-                            DatabaseManipulator.executeQueryWithResultSet(generelinfoHandlerClinicalSuiteDB, "SELECT * FROM `ClinicalSuiteDBGenerelInformation`  WHERE `CPR-nummer` ='"+CPRnummerTextField.getText()+"'");
+                    if(generelinfoHandler.getSizeOfGenerelinfoListe() !=0) {
+                        if (generelinfoHandler.getGenerelinfoListe(0).getSkemaUdfyld().equals("false")){
+
+                            Patientinformation patientinformation = new Patientinformation(); 
+                            patientinformation.setGenerelInfoPSDB(generelinfoHandler.getGenerelinfoListe(0));
+                            mainApp.showRootlayer(patientinformation);
                             
-                            Patient patient = new Patient(); 
-                            patient.setGenerelInfoTemporyDB(generelinfoHandlerTemporyDB.getGenerelinfoListe(0));
-                            patient.setGenerelinfoClinicalSuiteDB(generelinfoHandlerClinicalSuiteDB.getGenerelinfoListe(0));
-                            mainApp.showRootlayer(patient);
+
 
                         }else alertBox("Praebooking-skema allerede udfyldt");
                     } else alertBox("Intet Praebooking skema er tilsendt");      
