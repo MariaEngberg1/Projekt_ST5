@@ -4,37 +4,32 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class ConfirmBoxController {
-    private Stage dialogStage;
+public class TransferController {
+    private Stage transferStage;
     private Boolean answer; 
-
-    public void initialize() {
-    }
 
     @FXML
     void handlerJaBnt(ActionEvent event) {
         this.answer = true; 
-        dialogStage.close();
+        transferStage.close();
     }
 
     @FXML
     void handlerNejBnt(ActionEvent event) {
         this.answer = false; 
-        dialogStage.close();
+        transferStage.close();
     }
 
      /**
-     * Sets the stage of this dialog.
-     * 
-     * @param dialogStage
+     * Sets the reference to the transfer stage
+     * @param transferStage
      */
-    public void setDialogStage(Stage dialogStage) {
-        this.dialogStage = dialogStage;
+    public void setTransferStage(Stage transferStage) {
+        this.transferStage = transferStage;
     }
 
      /**
      * Returns true if the user clicked OK, false otherwise.
-     * 
      * @return
      */
     public boolean chosenAnswer() {

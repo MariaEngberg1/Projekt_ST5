@@ -40,13 +40,13 @@ public class CPRCtrl {
 
                     // If CPR exist in PSDB, array will be 1 in size
                     if(generelinfoHandler.getSizeOfGenerelinfoListe() !=0) {
-                        // Check if entered CPR-nr already have answered questionnaire
+                        // Check if entered CPR-nr already has answered questionnaire
                         if (generelinfoHandler.getGenerelinfoListe(0).getSkemaUdfyld().equals("false")){
                             // Load instance in patient
                             Patientinformation patientinformation = new Patientinformation(); 
                             patientinformation.setGenerelInfoPSDB(generelinfoHandler.getGenerelinfoListe(0));
 
-                            // Chance shift view to rootlayer
+                            // Shift view to rootlayer
                             mainApp.showRootlayer(patientinformation);
                         }else alertBox("Praebooking-skema allerede udfyldt");
                     } else alertBox("Intet Praebooking skema er tilsendt");      

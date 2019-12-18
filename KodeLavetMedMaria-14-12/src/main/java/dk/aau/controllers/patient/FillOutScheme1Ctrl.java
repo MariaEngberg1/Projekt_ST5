@@ -62,7 +62,7 @@ public class FillOutScheme1Ctrl {
 
     /**
      * Function indicate whether all information has been filled
-     * @return indicator whether alle info has been filled 
+     * @return indicator whether all info has been filled 
      */
     public Boolean checkIfReadyToPresNext(){
         boolean bool = true; 

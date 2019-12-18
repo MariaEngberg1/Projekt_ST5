@@ -39,14 +39,14 @@ public class FillOutScheme2Ctrl {
     public Boolean checkIfReadyToPresNext(){
         boolean bool = true; 
 
-        // Check if information regarding closes person has been identified 
+        // Check if information regarding closest person has been identified 
         if(naermesteNavnTF.getPromptText().isEmpty() && naermesteNavnTF.getText().isEmpty() ) {
             NarmesteNavnErrorLabel.setText("Ovenstaande information ikke udfyldt");
             NarmesteNavnErrorLabel.setVisible(true); 
             bool = false; 
         }else if(!naermesteNavnTF.getText().isEmpty()) patientinformation.generelInfoPSDB.setNaermesteNavn(naermesteNavnTF.getText());
 
-        // Check if information regarding closes person mobil or TLF has been identified 
+        // Check if information regarding closest person mobil or TLF has been identified 
         if(NaermesteTelefonTF.getPromptText().isEmpty() && NaermesteTelefonTF.getText().isEmpty() && NaermesteMobilTF.getPromptText().isEmpty() && NaermesteMobilTF.getText().isEmpty()) {
             NaermesteTlfErrorLabel.setText("Ovenstaaende eller nedstaaende infromation ikke udfyld");
             NaermesteTlfErrorLabel.setVisible(true); 
@@ -85,7 +85,7 @@ public class FillOutScheme2Ctrl {
             }
         }
 
-        // Check if information regarding closes person work has been identified 
+        // Check if information regarding closest person work has been identified 
         if(NaermesteArbejdeTF.getPromptText().isEmpty() && NaermesteArbejdeTF.getText().isEmpty() ) {
             NaermesteArbejdeErrorLabel_id.setText("Ovenstaaende information er ikke udfyldt"); 
             NaermesteArbejdeErrorLabel_id.setVisible(true); 

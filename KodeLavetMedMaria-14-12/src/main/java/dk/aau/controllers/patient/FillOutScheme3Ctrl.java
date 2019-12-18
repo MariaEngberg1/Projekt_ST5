@@ -145,25 +145,30 @@ public class FillOutScheme3Ctrl {
      * @return indicator whether alle info has been filled 
      */
     public Boolean checkIfReadyToPresNext(){
-        boolean bool = true; 
+        boolean bool = true;
+        
+        // Check if information regarding heart disease has been identified 
         if(!HjertejaChechBox_id.isSelected() && !nejHjerteCheckBox_id.isSelected()){
             hjerteErrorLabel.setText("Ovenstaaende checkbokse er ikke udfyldte");
             hjerteErrorLabel.setVisible(true); 
             bool = false; 
         }
 
+        // Check if information regarding asthma has been identified 
         if(!AstmaJaChechBox_id.isSelected() && !AstamaNejCheckBox_id.isSelected()){
             AstmaErrorLabel.setText("Ovenstaaende checkbokse er ikke udfyldte");
             AstmaErrorLabel.setVisible(true); 
             bool = false; 
         }
 
+        // Check if information regarding heart kidney desease has been identified 
         if(!nyreJaChechBox_id.isSelected() && !NyreNejCheckBox_id.isSelected()){
             NyreErrorLabel.setText("Ovenstaaende checkbokse er ikke udfyldte");
             NyreErrorLabel.setVisible(true); 
             bool = false; 
         }
 
+        // Check if information regarding diabetes has been identified 
         if(!sukkerJaChechBox_id.isSelected() && !SukkerNejCheckBox_id.isSelected()){
             NaermesteArbejdeErrorLabel_id.setText("Ovenstaaende checkbokse er ikke udfyldte");
             NaermesteArbejdeErrorLabel_id.setVisible(true); 

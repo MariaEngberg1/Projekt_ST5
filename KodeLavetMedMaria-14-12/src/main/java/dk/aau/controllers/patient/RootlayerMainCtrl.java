@@ -49,8 +49,8 @@ public class RootlayerMainCtrl {
     }
 
     /**
-     * @param mainApp reference to instance of app
-     * @param borderpane reference to rootlayerViews borderpana 
+     * @param mainApp reference to instance of mainApp
+     * @param borderpane reference to rootlayerViews borderpane
      * @param patientinformation reference to object of Patientinformation which were validated in CPRCtrl
      */
     public void setReferenceParameteres(App mainApp, BorderPane borderpane, Patientinformation patientinformation){
@@ -95,7 +95,7 @@ public class RootlayerMainCtrl {
 
         if(nrCenterViewShowing == 5) {
             if(mainApp.showTransferView()){
-                // Send a update SQL-statement
+                // Send an updated SQL-statement
                 DatabaseManipulator.updateDataBase("UPDATE `TemporyDBGenerelInformation` SET `Arbejde` = '"+patientinformation.generelInfoPSDB.getArbejde() +"', `Mobilnummer` = '"+patientinformation.generelInfoPSDB.getMobilNummer() +"', `telefonNummer` = '"+patientinformation.generelInfoPSDB.getTelefonNummer() +"', `naermesteNavn` = '"+patientinformation.generelInfoPSDB.getNaermesteNavn() +"', `naermesteTlf` = '"+patientinformation.generelInfoPSDB.getNaermesteTlf() +"', `naermesteMobil` = '"+patientinformation.generelInfoPSDB.getNaermesteMobil() +"', `naermesteArbejde` = '"+patientinformation.generelInfoPSDB.getNaermesteArbejde() +"', `mrsa` = '', `okHentOplysninger` = '"+patientinformation.generelInfoPSDB.getOkHentOplysninger() +"', `SkemaUdfyld` = 'true' WHERE `TemporyDBGenerelInformation`.`CPR-nummer` = '"+patientinformation.generelInfoPSDB.getCprNummer()+"'");                                       
                 // Close the app
                 Stage primaryStage = mainApp.getPrimaryStage(); 
@@ -117,7 +117,7 @@ public class RootlayerMainCtrl {
             // Set person overview into the center of root layout.
             borderpane.setCenter(anchorpane);
 
-            // Give the controller access to the main app.
+            // Give the controller access to the instance of patientinformation
             fillOutScheme1Ctrl = loader.getController();
             fillOutScheme1Ctrl.setPatientReference(patientinformation);
             TilbageBtn.setVisible(false);
@@ -141,7 +141,7 @@ public class RootlayerMainCtrl {
             // Set person overview into the center of root layout.
             borderpane.setCenter(anchorpane);
 
-            // Give the controller access to the main app.
+            // Give the controller access to the instance of patientinformation
             fillOutScheme2Ctrl = loader.getController();
             fillOutScheme2Ctrl.setPatientReference(patientinformation);
 
@@ -163,7 +163,7 @@ public class RootlayerMainCtrl {
             // Set person overview into the center of root layout.
             borderpane.setCenter(anchorpane);
 
-            // Give the controller access to the main app.
+            // Give the controller access to the instance of patientinformation
             fillOutScheme3Ctrl = loader.getController();
             fillOutScheme3Ctrl.setPatientReference(patientinformation);
 
@@ -173,7 +173,7 @@ public class RootlayerMainCtrl {
     }
 
      /**
-     * Show view containing message that all questionnaire has been filled and set corresponding ctrl.
+     * Show view containing message that all questionnaire has been filled
      */
     public void showPtSlut() {
         try {

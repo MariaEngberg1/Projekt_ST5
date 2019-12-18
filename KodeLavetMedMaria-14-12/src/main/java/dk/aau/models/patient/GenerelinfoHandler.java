@@ -9,10 +9,9 @@ public class GenerelinfoHandler implements Queryable {
     private String fetchDataFromWhichDB;
     private ArrayList<Generelinfo> generelinfoListe = new ArrayList<>();
 
-
     /**
      * Method is use to determine how information is stored in GenerelInformation
-     * @param fetchDataFromWhichDB this indput paremeter determines wether downlaoded information should be storage as comming from CS or PSDB 
+     * @param fetchDataFromWhichDB this input parameter determines wether downlaoded information should be storage as comming from CS or PSDB 
      */
     public GenerelinfoHandler(String fetchDataFromWhichDB){
         this.fetchDataFromWhichDB = fetchDataFromWhichDB; 
@@ -34,7 +33,6 @@ public class GenerelinfoHandler implements Queryable {
     }
 
     /**
-     * 
      * @param locationNumberInArray type int 
      * @return the object in relative to the locationNumberInArray
      */

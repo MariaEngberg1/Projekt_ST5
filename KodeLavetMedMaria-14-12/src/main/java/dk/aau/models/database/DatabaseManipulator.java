@@ -1,5 +1,6 @@
 package dk.aau.models.database;
 
+//Importing classes for database communication
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,12 +23,10 @@ public class DatabaseManipulator {
                 try{
                     // Set user, password, and adress to database
                     conn = DriverManager.getConnection(DataBaseDetails.host, DataBaseDetails.username, DataBaseDetails.password);
-                }
-                catch (SQLException sqlex){
+                } catch (SQLException sqlex){
                     System.out.println(sqlex.getMessage());
                 }
-            }
-            catch (ClassNotFoundException ex){
+            } catch (ClassNotFoundException ex){
                 System.out.println(ex.getMessage());
             } 
         return conn; 
@@ -51,7 +50,7 @@ public class DatabaseManipulator {
                 // Executes the given SQL statement, which returns a single ResultSet object.
                 rs = stmt.executeQuery(sqlStatement);
 
-                // Make inserted class procoess the resultset
+                // Make inserted class process the resultset
                 queryable.processResultSet(rs); 
             }
             catch (SQLException sqlex){
@@ -77,6 +76,10 @@ public class DatabaseManipulator {
         }
     } 
 
+    /**
+     * method for updating database, no Resultset return 
+     * @param sqlStatement 
+     */
     public static void updateDataBase(String sqlStatement){
         Connection conn = getConnection();
         Statement stmt = null; 
