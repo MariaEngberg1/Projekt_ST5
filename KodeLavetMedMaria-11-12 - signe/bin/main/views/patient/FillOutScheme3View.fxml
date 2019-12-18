@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.aau.controllers.patient.FillOutScheme3Ctrl">
+   <children>
+      <Label fx:id="hjerteErrorLabel" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.leftAnchor="338.0" AnchorPane.topAnchor="60.0" />
+      <Label fx:id="AstmaErrorLabel" text="Udfyld enten nedstående eller nedstående information :" textFill="RED" visible="false" AnchorPane.leftAnchor="338.0" AnchorPane.topAnchor="150.0" />
+      <Label fx:id="NyreErrorLabel" text="Udfyld nedstående information :" textFill="RED" visible="false" AnchorPane.leftAnchor="338.0" AnchorPane.topAnchor="235.0" />
+      <Label fx:id="NaermesteArbejdeErrorLabel_id" text="Vælg en af ovenstående check-bokse" textFill="RED" visible="false" AnchorPane.leftAnchor="338.0" AnchorPane.topAnchor="320.0" />
+      <GridPane layoutX="-4.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.20001220703125" minWidth="10.0" prefWidth="210.19998779296876" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="372.39996337890625" minWidth="10.0" prefWidth="328.6000122070313" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Astma / bronkitis" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Nyresygdom " GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Hjertesygdom">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Sukkersyge" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <CheckBox fx:id="HjertejaChechBox_id" mnemonicParsing="false" onAction="#handleHjerteJaCheckBoc" text="Ja">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" right="10.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="nejHjerteCheckBox_id" mnemonicParsing="false" onAction="#handleNejHjerteChechBox" text="Nej">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+               <padding>
+                  <Insets top="35.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <CheckBox fx:id="AstmaJaChechBox_id" mnemonicParsing="false" onAction="#handleAstmaJaCheckBoc" text="Ja">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" right="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="35.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox fx:id="AstamaNejCheckBox_id" mnemonicParsing="false" onAction="#handleAstmaNejChechBox" text="Nej">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="35.0" />
+                     </padding>
+                  </CheckBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <CheckBox fx:id="nyreJaChechBox_id" mnemonicParsing="false" onAction="#handleNyreJaCheckBoc" text="Ja">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" right="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="35.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox fx:id="NyreNejCheckBox_id" mnemonicParsing="false" onAction="#handleNyreNejChechBox" text="Nej">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="35.0" />
+                     </padding>
+                  </CheckBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <CheckBox fx:id="sukkerJaChechBox_id" mnemonicParsing="false" onAction="#handleSukkerJaCheckBox" text="Ja">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" right="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="35.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox fx:id="SukkerNejCheckBox_id" mnemonicParsing="false" onAction="#handleSukkerNejChechBox" text="Nej">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="35.0" />
+                     </padding>
+                  </CheckBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </GridPane>
+   </children>
+</AnchorPane>

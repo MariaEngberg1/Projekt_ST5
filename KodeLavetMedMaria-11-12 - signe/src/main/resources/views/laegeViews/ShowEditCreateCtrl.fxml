@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.aau.controllers.sygehus.ShowEditCreateCtrl">
+   <children>
+      <SplitPane dividerPositions="0.9154727793696275" layoutX="320.0" layoutY="186.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ScrollPane layoutY="33.0" prefHeight="636.0" prefWidth="998.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1600.0" prefWidth="982.0">
+                           <children>
+                              <VBox maxWidth="-Infinity" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="Personoplysning af patient">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="3.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <AnchorPane prefWidth="982.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="5.0" text="Navn : " AnchorPane.leftAnchor="14.0" />
+                                          <TextField fx:id="PatientNavnTF" layoutX="67.0" layoutY="1.0" prefHeight="26.0" prefWidth="338.0" AnchorPane.leftAnchor="65.0" />
+                                          <Label layoutX="457.0" layoutY="5.0" text="CPR-nr : " />
+                                          <TextField fx:id="cprTF" layoutX="513.0" prefHeight="26.0" prefWidth="97.0" />
+                                          <Label layoutX="12.0" layoutY="55.0" text="Tlf Nr : " />
+                                          <TextField fx:id="tlfTF" layoutX="64.0" layoutY="51.0" prefHeight="26.0" prefWidth="125.0" AnchorPane.leftAnchor="65.0" />
+                                          <Label layoutX="195.0" layoutY="54.0" text="Mobil Nr : " />
+                                          <Label layoutX="615.0" layoutY="5.0" text="Arbejde / Erhverv : " />
+                                          <TextField fx:id="arbejdeTF" layoutX="717.0" layoutY="1.0" prefHeight="26.0" prefWidth="218.0" />
+                                          <TextField fx:id="mobilTF" layoutX="248.0" layoutY="51.0" prefHeight="26.0" prefWidth="156.0" />
+                                          <Label layoutX="451.0" layoutY="52.0" text="Adresse : " />
+                                          <TextField fx:id="adresseFT" layoutX="514.0" layoutY="49.0" prefHeight="26.0" prefWidth="421.0" />
+                                          <VBox layoutX="13.0" layoutY="96.0">
+                                             <children>
+                                                <Label text="Nærmeste:">
+                                                   <padding>
+                                                      <Insets bottom="7.0" />
+                                                   </padding>
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox spacing="5.0">
+                                                   <children>
+                                                      <Label text="Navn :    " />
+                                                      <TextField fx:id="naermesteNavnTF" prefHeight="26.0" prefWidth="338.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="7.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox spacing="5.0">
+                                                   <children>
+                                                      <Label text="Tlf Nr :    " />
+                                                      <TextField fx:id="naermesteTlfTF" prefHeight="26.0" prefWidth="139.0" />
+                                                      <Label text="Mobil : ">
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <TextField fx:id="naermesteMobilTF" prefHeight="26.0" prefWidth="144.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="8.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox spacing="5.0">
+                                                   <children>
+                                                      <Label text="Arbejde :" />
+                                                      <TextField fx:id="naermesteArbejdeTF" prefHeight="26.0" prefWidth="336.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="7.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="457.0" layoutY="129.0">
+                                             <children>
+                                                <Label text="Har du tidligere fået påvist MRSA eller inden for de sidste 6 måneder: " />
+                                                <Label text="Modtaget behandling på hospital eller klinik i udlandet (uden for Norden)" />
+                                                <Label text="Boet sammen med (eller haft anden husstandslignede kontakt med) en person, der var " />
+                                                <Label text="MRSA-positiv?" />
+                                                <Label text="Haft daglig arbejde i en svinestald eller på anden måde arbejdet med levende svin (eller " />
+                                                <Label text="bor sammen med en, der har)? " />
+                                             </children>
+                                          </VBox>
+                                          <CheckBox fx:id="mrsaJaCheckBnt" disable="true" layoutX="457.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleMrsaJaCheckBnt" text="Ja" />
+                                          <CheckBox fx:id="mrsaCheckBnt" disable="true" layoutX="507.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleMrsaNejCheckBnt" text="Nej" />
+                                          <Label layoutX="12.0" layoutY="274.0" text="Egen Læge : " AnchorPane.leftAnchor="12.0" />
+                                          <TextField fx:id="EgenLaegeTF" layoutX="83.0" layoutY="269.0" prefHeight="26.0" prefWidth="320.0" />
+                                          <Label layoutX="12.0" layoutY="318.0" text="Jeg er indforstået med, at der indhentes oplysninger ved egen læge" AnchorPane.topAnchor="318.0" />
+                                          <CheckBox fx:id="henteOplysningerJaCheckBnt" disable="true" layoutX="387.0" layoutY="318.0" mnemonicParsing="false" onAction="#HandleHenteOplysningerJaCheckBnt" text="Ja" />
+                                          <CheckBox fx:id="henteOplysningerNejCheckBnt" disable="true" layoutX="431.0" layoutY="318.0" mnemonicParsing="false" onAction="#handlehenteOplysningerNejCheckBnt" text="Nej" />
+                                          <Label fx:id="tlfIkkeUdfyldtLabel" layoutX="64.0" layoutY="78.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="mobilIkkeUdfyldtLabel" layoutX="248.0" layoutY="78.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="ArbejdeIkkeUdfyldtLabel" layoutX="717.0" layoutY="28.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="AdresseIkkeUdfyldtLabel" layoutX="515.0" layoutY="78.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="mrsaIkkeUdfyldtLabel" layoutX="562.0" layoutY="240.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="naermesteNavnIkkeUdfyldtLabel" layoutX="64.0" layoutY="150.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="naermesteTlfIkkeUdfyldtLabel" layoutX="64.0" layoutY="199.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="naermesteMobilIkkeUdfyldtLabel" layoutX="259.0" layoutY="199.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="naermestearbejdeIkkeUdfyldtLabel" layoutX="65.0" layoutY="247.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="egenLaegeIkkeUdfyldtLabel" layoutX="85.0" layoutY="296.0" text="Marie Fiesen" textFill="RED" visible="false" />
+                                          <Label fx:id="egenlaegeOplysninger" layoutX="423.0" layoutY="318.0" text="Label" textFill="RED" visible="false" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Label text="Tidligere Sygdomme">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="3.0" top="30.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <AnchorPane prefWidth="982.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="5.0" text="Har du eller har du haft: " />
+                                          <VBox layoutX="14.0" layoutY="41.0" prefWidth="150.0">
+                                             <children>
+                                                <Label text="Hjertesygdom">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Astma / bronkitis">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label prefWidth="300.0" text="Nyresygdom">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Sukkersyge">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Andre sygdomme">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="20.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox layoutX="164.0" layoutY="23.0" prefWidth="150.0">
+                                             <children>
+                                                <Label text="Ja       Nej">
+                                                   <padding>
+                                                      <Insets bottom="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox fx:id="hjertesygdomJaCheckBox" disable="true" mnemonicParsing="false" selected="true" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <Label fx:id="HjerteSygdommeIkkeUdfyldtLabel" text="Marie Fiesen" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="astmaIkkeUdfyldtLabel" text="Marie Fiesen" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="NyresygdomIkkeUdfyldtLabel" text="Marie Fiesen" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="sukkersygeIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="andreSygdommeIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="329.0" layoutY="41.0" prefHeight="184.0" prefWidth="150.0">
+                                             <children>
+                                                <Label text="Blødersygdom">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Mavesår">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label prefWidth="300.0" text="Halsbrand, sure opstød">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Forhøjet Blodtryk">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Hvilke : ">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="20.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox layoutX="479.0" layoutY="23.0" prefWidth="150.0">
+                                             <children>
+                                                <Label text="Ja       Nej">
+                                                   <padding>
+                                                      <Insets bottom="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="bloederSygdommeIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="mavesaarIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="halsbrandIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="HoejBlodtrykIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="667.0" layoutY="41.0" prefWidth="150.0">
+                                             <children>
+                                                <Label text="Epilepsi">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Rygproblemer">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label prefWidth="300.0" text="Knæ el. hofteproblemer">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label text="Stofskiftesygdom">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="20.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox layoutX="817.0" layoutY="23.0" prefWidth="150.0">
+                                             <children>
+                                                <Label text="Ja       Nej">
+                                                   <padding>
+                                                      <Insets bottom="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="ElilepsiIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="rygprogroblemmerIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="hofteProblemIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <children>
+                                                      <CheckBox disable="true" mnemonicParsing="false" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                      <Label fx:id="stoftSkifteIkkeUdfyldtLabel" text="Label" textFill="RED" visible="false" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox prefWidth="200.0" spacing="20.0">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <TextField editable="false" layoutX="417.0" layoutY="225.0" prefHeight="26.0" prefWidth="533.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="190.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Label text="Allergi / Overfølsomhed">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="3.0" />
+                                       </padding>
+                                    </Label>
+                                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="982.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" text="Allergi / Overfølsomhed : " />
+                                          <Label layoutX="14.0" layoutY="46.0" text="Latexallergi : " />
+                                          <Label layoutX="275.0" layoutY="14.0" text="Hvis ja, overfor hvad : " />
+                                          <Label layoutX="275.0" layoutY="46.0" text="Penicillin allergi" />
+                                          <CheckBox disable="true" layoutX="161.0" layoutY="14.0" mnemonicParsing="false" selected="true" text="Ja" />
+                                          <CheckBox disable="true" layoutX="208.0" layoutY="14.0" mnemonicParsing="false" text="Nej " />
+                                          <TextField editable="false" layoutX="402.0" layoutY="10.0" prefHeight="26.0" prefWidth="534.0" promptText="Pollen allergi" />
+                                          <CheckBox disable="true" layoutX="163.0" layoutY="46.0" mnemonicParsing="false" selected="true" text="Ja" />
+                                          <CheckBox disable="true" layoutX="210.0" layoutY="46.0" mnemonicParsing="false" text="Nej " />
+                                          <CheckBox disable="true" layoutX="402.0" layoutY="46.0" mnemonicParsing="false" text="Ja" />
+                                          <CheckBox disable="true" layoutX="449.0" layoutY="46.0" mnemonicParsing="false" selected="true" text="Nej " />
+                                       </children>
+                                    </AnchorPane>
+                                    <Label text="Tandstatus">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="3.0" top="30.0" />
+                                       </padding>
+                                    </Label>
+                                    <AnchorPane prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="982.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label layoutX="43.0" layoutY="40.0" text="Skader / løshed på tænder : " AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="40.0" />
+                                                <Label layoutX="403.0" layoutY="40.0" text="Protese : " AnchorPane.topAnchor="40.0" />
+                                                <Label layoutX="653.0" layoutY="40.0" text="Bro / stifttand / krone" />
+                                                <VBox layoutX="210.0" layoutY="17.0" prefWidth="150.0">
+                                                   <children>
+                                                      <Label text="Ja       Nej">
+                                                         <padding>
+                                                            <Insets bottom="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <HBox prefWidth="200.0" spacing="20.0">
+                                                         <children>
+                                                            <CheckBox disable="true" mnemonicParsing="false" />
+                                                            <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets bottom="20.0" />
+                                                         </padding>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <HBox layoutX="10.0" layoutY="10.0" prefWidth="200.0" spacing="20.0">
+                                                   <padding>
+                                                      <Insets bottom="20.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <VBox layoutX="472.0" layoutY="19.0" prefWidth="150.0">
+                                                   <children>
+                                                      <Label text="Ja       Nej">
+                                                         <padding>
+                                                            <Insets bottom="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <HBox prefWidth="200.0" spacing="20.0">
+                                                         <children>
+                                                            <CheckBox disable="true" mnemonicParsing="false" />
+                                                            <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets bottom="20.0" />
+                                                         </padding>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="788.0" layoutY="18.0" prefWidth="150.0">
+                                                   <children>
+                                                      <Label text="Ja       Nej">
+                                                         <padding>
+                                                            <Insets bottom="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <HBox prefWidth="200.0" spacing="20.0">
+                                                         <children>
+                                                            <CheckBox disable="true" mnemonicParsing="false" selected="true" />
+                                                            <CheckBox disable="true" mnemonicParsing="false" />
+                                                         </children>
+                                                         <padding>
+                                                            <Insets bottom="20.0" />
+                                                         </padding>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </children></AnchorPane>
+                                    <Label layoutX="10.0" layoutY="793.0" text="Vane">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="3.0" />
+                                       </padding>
+                                    </Label>
+                                    <AnchorPane prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="982.0">
+                                             <children>
+                                                <Label layoutX="57.0" layoutY="28.0" text="Tobak" AnchorPane.leftAnchor="14.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="746.0" layoutY="29.0" text="Motion / Aktivitetsniveau">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="355.0" layoutY="29.0" text="Alkohol">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <CheckBox disable="true" layoutX="33.0" layoutY="57.0" mnemonicParsing="false" selected="true" text="Aldrig røget" />
+                                                <CheckBox disable="true" layoutX="33.0" layoutY="88.0" mnemonicParsing="false" text="Tidl. Røget" />
+                                                <TextField editable="false" layoutX="127.0" layoutY="84.0" promptText="Røgfri år" />
+                                                <Label layoutX="33.0" layoutY="122.0" text="Nuværende Forbrug" />
+                                                <TextField editable="false" layoutX="150.0" layoutY="117.0" prefHeight="26.0" prefWidth="125.0" />
+                                                <Label layoutX="370.0" layoutY="57.0" text="Daglig forbrug : " />
+                                                <CheckBox disable="true" layoutX="469.0" layoutY="57.0" mnemonicParsing="false" text="Ja" />
+                                                <CheckBox disable="true" layoutX="515.0" layoutY="57.0" mnemonicParsing="false" selected="true" text="Nej" />
+                                                <Label layoutX="370.0" layoutY="88.0" text="Genstande pr. uge : " />
+                                                <TextField editable="false" layoutX="485.0" layoutY="83.0" prefHeight="26.0" prefWidth="125.0" promptText="0" />
+                                                <Label layoutX="761.0" layoutY="122.0" text="Lav : " />
+                                                <Label layoutX="760.0" layoutY="88.0" text="Middel :" />
+                                                <Label layoutX="760.0" layoutY="57.0" text="Høj :" />
+                                                <CheckBox disable="true" layoutX="824.0" layoutY="57.0" mnemonicParsing="false" />
+                                                <CheckBox disable="true" layoutX="824.0" layoutY="87.0" mnemonicParsing="false" selected="true" />
+                                                <CheckBox disable="true" layoutX="824.0" layoutY="122.0" mnemonicParsing="false" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children></AnchorPane>
+                                    <Label text="Tidligere operationer og sygdom, der krævede indlæggelse">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="20.0" left="3.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <GridPane prefHeight="91.0" prefWidth="900.0" AnchorPane.leftAnchor="14.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.80001831054688" minWidth="10.0" prefWidth="215.80001831054688" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.599951171875" minWidth="10.0" prefWidth="379.79998168945315" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="709.3999481201172" minWidth="10.0" prefWidth="357.60004882812507" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Hvornår">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Hvor (hospital og afdeling)" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="18.0" prefWidth="217.0" text="Operation / sygdom" GridPane.columnIndex="2">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="21 - 6 - 2006" GridPane.rowIndex="1" />
+                                                <Label text="28 - 12 - 2007" GridPane.rowIndex="2" />
+                                                <Label text="Aalborg Universitetshospital, Ortopædkirurgisk afdeling K4 " GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Aalborg Universitetshospital, Karkirurgi A3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label text="Brud på lårbensskaftet  / femur" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label text="Aortaaneurismer" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                             </children>
+                                          </GridPane>
+                                       </children></AnchorPane>
+                                    <Label text="Nuværende medicin">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="3.0" />
+                                       </padding>
+                                    </Label>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="982.0">
+                                             <children>
+                                                <GridPane layoutX="27.0" layoutY="25.0" prefHeight="125.0" prefWidth="954.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.80001831054688" minWidth="10.0" prefWidth="215.80001831054688" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.599951171875" minWidth="10.0" prefWidth="379.79998168945315" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="709.3999481201172" minWidth="10.0" prefWidth="357.60004882812507" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label text="Medicin navn">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Styrke (antal mg eller gram) " GridPane.columnIndex="1">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="18.0" prefWidth="291.0" text="Hvordan tager du dem, fordelt på døgnet" GridPane.columnIndex="2">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Cetirizin &quot;Teva&quot;" GridPane.rowIndex="1" />
+                                                      <Label text="Ibuprofen" GridPane.rowIndex="2" />
+                                                      <Label text="10 mg" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label text="200 mg" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <Label text="1 tabellet om morgen " GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                      <Label text="1 tabellet om morgen og 1 tabellet kl 12" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                   </children>
+                                                </GridPane>
+                                                <Label layoutX="14.0" layoutY="143.0" text="Får du blodfortyndende medicin : " />
+                                                <CheckBox disable="true" layoutX="282.0" layoutY="142.0" mnemonicParsing="false" selected="true" text="Nej" />
+                                                <CheckBox disable="true" layoutX="232.0" layoutY="142.0" mnemonicParsing="false" text="Ja" />
+                                                <Label layoutX="14.0" layoutY="171.0" text="Får du natur medicin :  " />
+                                                <CheckBox disable="true" layoutX="282.0" layoutY="171.0" mnemonicParsing="false" selected="true" text="Nej" />
+                                                <CheckBox disable="true" layoutX="232.0" layoutY="171.0" mnemonicParsing="false" text="Ja" />
+                                                <Label layoutX="348.0" layoutY="171.0" text="Hvis ja, hvilke : " />
+                                                <TextField editable="false" layoutX="438.0" layoutY="165.0" prefHeight="26.0" prefWidth="181.0" />
+                                                <Button layoutX="647.0" layoutY="166.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="247.0" text="Tilføj/redigere informaiton til Medicin Liste" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="87.79999999999995" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children></AnchorPane>
+                                    <Label text="Ernæringsstatus">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="3.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="982.0">
+                                             <children>
+                                                <Label layoutX="376.0" layoutY="29.0" text="Vægttab de seneste 3 måneder : " />
+                                                <CheckBox disable="true" layoutX="615.0" layoutY="29.0" mnemonicParsing="false" text="Nej" />
+                                                <CheckBox disable="true" layoutX="565.0" layoutY="29.0" mnemonicParsing="false" pickOnBounds="false" selected="true" text="Ja" />
+                                                <Label layoutX="671.0" layoutY="29.0" text="Hvis ja, hvor meget: " />
+                                                <Label layoutX="14.0" layoutY="27.0" text="Højde" AnchorPane.leftAnchor="14.0" />
+                                                <TextField editable="false" layoutX="62.0" layoutY="23.0" prefHeight="26.0" prefWidth="98.0" text="1.71 m" />
+                                                <Label layoutX="209.0" layoutY="27.0" text="Vægt" />
+                                                <TextField editable="false" layoutX="257.0" layoutY="23.0" prefHeight="26.0" prefWidth="98.0" text="62 kg " />
+                                                <TextField editable="false" layoutX="795.0" layoutY="24.0" prefHeight="26.0" prefWidth="98.0" text="1 kg " />
+                                                <Label layoutX="14.0" layoutY="64.0" text="Normal appetit den sidste uge : " />
+                                                <CheckBox disable="true" layoutX="253.0" layoutY="64.0" mnemonicParsing="false" text="Nej" />
+                                                <CheckBox disable="true" layoutX="203.0" layoutY="64.0" mnemonicParsing="false" text="Ja" />
+                                                <Label layoutX="376.0" layoutY="63.0" text="BMI : " />
+                                                <TextField editable="false" layoutX="424.0" layoutY="59.0" prefHeight="26.0" prefWidth="98.0" text="21.2" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children></AnchorPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="419.0" prefWidth="798.0">
+               <children>
+                  <Button layoutX="42.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleTilbageBnt" text="Tilbage" AnchorPane.bottomAnchor="15.399999999999999" AnchorPane.leftAnchor="70.0" />
+                  <Button fx:id="SendTilPatientBnt" layoutX="718.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleSendtilPatientBnt" text="Overfør" AnchorPane.bottomAnchor="15.399999999999999" AnchorPane.rightAnchor="70.0" />
+                  <Label fx:id="overSkriftlabel_id" layoutX="344.0" layoutY="17.0" text="Opret Præbooking-Skema til Patient" AnchorPane.bottomAnchor="16.6">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="199.0" layoutY="36.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label fx:id="infoLabel" text="Information hentet fra EPJ database" visible="false">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="infoLabel" text="Patient har ændret informationen indhentet fra EPJ database" textFill="#0d00ff" visible="false" />
+                        <Label fx:id="infoLabel" text="Patient rapportet Information" textFill="#44ca29" visible="false" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
